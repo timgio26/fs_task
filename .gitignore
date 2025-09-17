@@ -1,0 +1,28 @@
+# .NET
+bin/
+obj/
+.vs/
+.vscode/
+*.suo
+*.ntvs*.*
+
+# React
+node_modules/
+build/
+
+# OS-specific files
+.DS_Store  # macOS
+Thumbs.db  # Windows
+
+# Other
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET Core
+*.vspscc
+*.vssscc
+TestResults/
+
+# React build output
+*.map
