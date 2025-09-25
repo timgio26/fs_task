@@ -1,7 +1,5 @@
 ﻿using System.Security.Claims;
-using BCrypt.Net;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using TaskApi.Data;
@@ -17,6 +15,13 @@ namespace TaskApi.Controllers
     {
         private readonly TaskDbContext _context = context;
         private readonly MyJwtService _myJwtService = myJwtService;
+
+        [HttpGet("version")]
+        public ActionResult<string> GetVersion()
+        {
+            return "1.0.3";
+        }
+
 
         //TaskController(TaskDbContext context)
         //{

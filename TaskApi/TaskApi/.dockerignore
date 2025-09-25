@@ -1,0 +1,36 @@
+# Build artifacts
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# IDE settings
+.vscode/
+.idea/
+*.sw?
+
+# Logs and temp
+*.log
+*.tmp
+*.bak
+
+# OS junk
+Thumbs.db
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Docker
+Dockerfile*
+.dockerignore
+
+# Node (if full-stack)
+node_modules/
+dist/
