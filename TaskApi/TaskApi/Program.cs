@@ -13,9 +13,13 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
-
 // 2. add db context
 builder.Services.AddDbContext<TaskDbContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+Console.WriteLine($"🔌 Connection string: {connectionString}");
+
+
+
 // 3. add auth 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
@@ -38,6 +42,10 @@ builder.Services.AddScoped<MyJwtService>();
 
 
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+var db = scope.ServiceProvider.GetRequiredService<TaskDbContext>();
+db.Database.Migrate(); // Applies migrations at runtime
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
